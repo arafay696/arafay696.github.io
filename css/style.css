@@ -230,39 +230,6 @@ p { margin: 0; }
   .hero__stats { grid-template-columns: repeat(2, auto); row-gap: 32px; }
 }
 
-.hero__portfolio {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px 20px;
-  margin-top: 28px;
-}
-.hero__portfolio-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
-}
-.hero__portfolio-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-}
-.hero__portfolio-links a {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--text-dim);
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-.hero__portfolio-links a:hover {
-  color: var(--accent);
-  border-color: var(--accent-dim);
-}
-
 .scroll-cue {
   position: absolute;
   bottom: 36px;
