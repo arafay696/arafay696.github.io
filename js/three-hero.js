@@ -18,8 +18,8 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  const accent = 0xc8ff3d;
-  const dim = 0x3a3d33;
+  const accent = 0xff8a68;
+  const dim = 0x3a3a3d;
 
   const group = new THREE.Group();
   scene.add(group);
@@ -79,7 +79,7 @@
     dustPos[i * 3 + 2] = (Math.random() - 0.5) * 8 - 2;
   }
   dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos, 3));
-  const dustMat = new THREE.PointsMaterial({ color: 0x555a47, size: 0.02, transparent: true, opacity: 0.5 });
+  const dustMat = new THREE.PointsMaterial({ color: 0x555555, size: 0.02, transparent: true, opacity: 0.5 });
   scene.add(new THREE.Points(dustGeo, dustMat));
 
   group.rotation.x = 0.35;

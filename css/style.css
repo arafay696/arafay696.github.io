@@ -1,7 +1,8 @@
 /* ============================================================
    Abd Ur Rafay — Portfolio
-   Aesthetic: dark "ledger / systems" — near-black, one lime accent,
-   editorial serif headlines against monospace data.
+   Aesthetic: dark "ledger / systems" — near-black base, one bold
+   coral accent, editorial serif headlines against monospace data,
+   brand-colored tool badges for extra richness.
    ============================================================ */
 
 :root {
@@ -13,9 +14,10 @@
   --text: #f2f0ea;
   --text-dim: rgba(242, 240, 234, 0.62);
   --text-faint: rgba(242, 240, 234, 0.38);
-  --accent: #c8ff3d;
-  --accent-dim: rgba(200, 255, 61, 0.14);
-  --accent-glow: rgba(200, 255, 61, 0.35);
+  --accent: #ff6b4a;
+  --accent-2: #ffb020;
+  --accent-dim: rgba(255, 107, 74, 0.14);
+  --accent-glow: rgba(255, 107, 74, 0.35);
 
   --serif: "Fraunces", ui-serif, Georgia, serif;
   --sans: "Sora", ui-sans-serif, system-ui, sans-serif;
@@ -119,11 +121,11 @@ p { margin: 0; }
   transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s, color 0.25s, border-color 0.25s;
 }
 .btn--primary {
-  background: var(--accent);
-  color: #0a0b0d;
-  font-weight: 600;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  color: #171008;
+  font-weight: 700;
 }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 34px var(--accent-glow); }
 .btn--ghost {
   border: 1px solid var(--line);
   color: var(--text);
@@ -154,6 +156,7 @@ p { margin: 0; }
   z-index: 1;
   pointer-events: none;
   background:
+    radial-gradient(ellipse 55% 45% at 62% 32%, rgba(255, 107, 74, 0.16) 0%, transparent 60%),
     radial-gradient(ellipse 60% 50% at 50% 30%, transparent 0%, var(--bg) 92%),
     linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
 }
@@ -474,6 +477,61 @@ main > section {
 @media (max-width: 940px) {
   .service-grid { grid-template-columns: 1fr; }
   .service-card p { min-height: 0; }
+}
+
+/* ---------- tools heading + grid ---------- */
+.tools-heading {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.92;
+  margin: clamp(64px, 10vw, 110px) 0 48px;
+}
+.tools-heading__line {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.tools-heading__line--ghost {
+  color: rgba(242, 240, 234, 0.07);
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 56px;
+}
+
+.tool-tile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.tool-tile__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--text);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.tool-tile__text { display: flex; flex-direction: column; gap: 3px; }
+.tool-tile__name { font-weight: 600; font-size: 1.02rem; color: var(--text); }
+.tool-tile__cat { font-size: 0.85rem; color: var(--text-faint); }
+
+@media (max-width: 720px) {
+  .tool-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- quote ---------- */
