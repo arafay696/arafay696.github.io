@@ -204,7 +204,7 @@ p { margin: 0; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(3, auto);
   gap: clamp(24px, 5vw, 64px);
   margin-top: 90px;
   padding-top: 32px;
