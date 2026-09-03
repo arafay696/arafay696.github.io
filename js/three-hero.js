@@ -12,7 +12,7 @@
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0, 0, 7.2);
+  camera.position.set(0, 0, 6.2);
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
@@ -25,12 +25,12 @@
   scene.add(group);
 
   // --- wireframe globe -------------------------------------------------
-  const globeGeo = new THREE.IcosahedronGeometry(2.35, 3);
+  const globeGeo = new THREE.IcosahedronGeometry(3.1, 3);
   const globeMat = new THREE.MeshBasicMaterial({
     color: dim,
     wireframe: true,
     transparent: true,
-    opacity: 0.35,
+    opacity: 0.55,
   });
   const globe = new THREE.Mesh(globeGeo, globeMat);
   group.add(globe);
@@ -41,14 +41,14 @@
   for (let i = 0; i < NODE_COUNT; i++) {
     const phi = Math.acos(1 - (2 * (i + 0.5)) / NODE_COUNT);
     const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
-    const r = 2.5;
+    const r = 3.3;
     const x = r * Math.sin(phi) * Math.cos(theta);
     const y = r * Math.sin(phi) * Math.sin(theta);
     const z = r * Math.cos(phi);
     nodePositions.push(new THREE.Vector3(x, y, z));
   }
 
-  const nodeGeo = new THREE.SphereGeometry(0.045, 12, 12);
+  const nodeGeo = new THREE.SphereGeometry(0.065, 16, 16);
   const nodeMat = new THREE.MeshBasicMaterial({ color: accent });
   nodePositions.forEach((pos) => {
     const m = new THREE.Mesh(nodeGeo, nodeMat);
@@ -57,11 +57,11 @@
   });
 
   // --- arcs connecting a few node pairs ---------------------------------
-  const arcMat = new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0.5 });
+  const arcMat = new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0.65 });
   for (let i = 0; i < NODE_COUNT; i++) {
     const a = nodePositions[i];
     const b = nodePositions[(i + 2) % NODE_COUNT];
-    const mid = a.clone().add(b).multiplyScalar(0.5).normalize().multiplyScalar(3.4);
+    const mid = a.clone().add(b).multiplyScalar(0.5).normalize().multiplyScalar(4.4);
     const curve = new THREE.QuadraticBezierCurve3(a, mid, b);
     const pts = curve.getPoints(24);
     const geo = new THREE.BufferGeometry().setFromPoints(pts);
@@ -84,6 +84,8 @@
 
   group.rotation.x = 0.35;
   group.rotation.y = -0.4;
+  group.position.x = 1.6;
+  group.position.y = -0.2;
 
   let mouseX = 0, mouseY = 0;
   window.addEventListener("mousemove", (e) => {

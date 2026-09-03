@@ -147,7 +147,7 @@ p { margin: 0; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .hero__vignette {
@@ -354,16 +354,46 @@ main > section {
   background: var(--bg-panel);
   border: 1px solid var(--line-soft);
   border-radius: 20px;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s;
   margin-bottom: 28px;
 }
 .case-study__index {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   font-family: var(--mono);
   font-size: 14px;
+  color: var(--accent);
+}
+.case-study__visit {
+  font-size: 11px;
+  color: var(--text-faint);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s, transform 0.3s, color 0.3s;
+}
+.case-study:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.case-study:hover .case-study__visit {
+  opacity: 1;
+  transform: translateX(0);
   color: var(--accent);
 }
 .case-study__content h3 { font-size: 1.6rem; margin-bottom: 6px; }
 .case-study__role { color: var(--text-faint); font-size: 0.92rem; margin-bottom: 18px; font-family: var(--mono); }
 .case-study__content p { color: var(--text-dim); line-height: 1.7; max-width: 62ch; }
+
+.case-study__gateways-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin: 26px 0 0;
+  max-width: none !important;
+}
 
 .case-study__tags {
   display: flex;
@@ -387,7 +417,7 @@ main > section {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
